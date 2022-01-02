@@ -1,9 +1,7 @@
 package com.example.rest.DAO;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +20,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(schema = "rest", name = "dishes")
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Dish {
 
     @Id
@@ -40,20 +39,15 @@ public class Dish {
 
     @ManyToMany
     @JoinTable(schema = "rest", name = "dishes_products",
-    joinColumns = @JoinColumn(name = "dish_id"),
-    inverseJoinColumns = @JoinColumn(name = "products_id"))
-    @JsonManagedReference
+    joinColumns = {@JoinColumn(name = "dish_id")},
+    inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private List<Product> products;
-
-    @ManyToOne
-    private TypeDish typeDish;
 
     @Column(name = "in_menu")
     private Boolean inMenu;
 
-    @ManyToMany
-    @JoinTable(schema = "rest", name = "")
-    @JsonIgnore
+    @JsonBackReference
+    @ManyToMany(mappedBy = "dishes")
     private List<Order> orders;
 
 }

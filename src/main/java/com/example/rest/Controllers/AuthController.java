@@ -23,7 +23,7 @@ public class AuthController {
     //Создание пользователя
     @RequestMapping(value = "/create", produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public User createUser(@Valid @RequestBody User user){
-        log.info("User create - {}", user);
+        log.info("User create - {}", user.getEmail());
         return userService.createUser(user);
     }
 
@@ -32,7 +32,7 @@ public class AuthController {
     // в случае удачи возвращает пользователя, иначе null)
     @RequestMapping(value = "/login",produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public User getUser(@RequestBody User user){
-        log.info("Auth users");
+        log.info("Auth users - {}", user.getEmail());
         return userService.getUser(user);
     }
 

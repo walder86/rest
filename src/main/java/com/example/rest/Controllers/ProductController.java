@@ -27,7 +27,7 @@ public class ProductController {
     //создание продукта
     @RequestMapping(value = "/create",produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public Product createProduct(@Valid @RequestBody Product product){
-        log.info("Product create - {}", product);
+        log.info("Product create - {}", product.getName());
         return productService.createProduct(product);
     }
 

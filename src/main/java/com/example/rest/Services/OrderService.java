@@ -19,7 +19,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public List<Order> gerOrders(){
+    public List<Order> getOrders(){
         return orderRepository.findAll();
     }
 

@@ -35,7 +35,7 @@ public class OrderController {
     @RequestMapping(produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public List<Order> getOrders(){
         log.info("Get orders");
-        return orderService.gerOrders();
+        return orderService.getOrders();
     }
 
     //подсчёт выручки всех заказов

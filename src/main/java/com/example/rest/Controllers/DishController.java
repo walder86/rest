@@ -2,6 +2,7 @@ package com.example.rest.Controllers;
 
 
 import com.example.rest.DAO.Dish;
+import com.example.rest.DAO.Product;
 import com.example.rest.Services.DishService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Slf4j
@@ -25,9 +27,9 @@ public class DishController {
 
 
     //Создание блюда
-    @RequestMapping(value = "/create",produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/create",produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public Dish createDish(@Valid @RequestBody Dish dish){
-        log.info("Dish create - {}", dish);
+        log.info("Dish create - {}", dish.getName());
         return dishService.createDish(dish);
     }
 

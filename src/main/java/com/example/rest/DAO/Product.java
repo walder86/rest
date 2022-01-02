@@ -36,10 +36,7 @@ public class Product {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @ManyToMany
-    @JoinTable(schema = "rest", name = "dishes_products",
-            joinColumns = @JoinColumn(name = "products_id"),
-            inverseJoinColumns = @JoinColumn(name = "dish_id"))
-    @JsonIgnore
+    @JsonBackReference
+    @ManyToMany(mappedBy = "products")
     private List<Dish> dishes;
 }
