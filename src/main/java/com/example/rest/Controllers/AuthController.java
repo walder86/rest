@@ -31,9 +31,15 @@ public class AuthController {
     //Проверка на существование (на вход идёт объект User с полями логина и пароля, остальные null
     // в случае удачи возвращает пользователя, иначе null)
     @RequestMapping(value = "/login",produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public User getUsers(@RequestBody User user){
-        log.info("Get users");
+    public User getUser(@RequestBody User user){
+        log.info("Auth users");
         return userService.getUser(user);
+    }
+
+
+    @RequestMapping(produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public List<User> getUsers(){
+        return userService.getUsers();
     }
 
 }

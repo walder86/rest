@@ -31,11 +31,6 @@ public class User {
     private String email;
 
     @NotNull
-    @Size(min = 4)
-    @Column(name = "login")
-    private String login;
-
-    @NotNull
     @Size(min = 8)
     @Column(name = "password")
     private String password;
@@ -43,6 +38,7 @@ public class User {
     @NotNull
     @Column(name = "role")
     private String role;
+
 
 
 }
