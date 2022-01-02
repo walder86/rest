@@ -24,7 +24,8 @@ public class DishService {
     }
 
     public Dish menu(Dish dish){
-        dishRepository.findByName(dish.getName()).setInMenu(dish.getInMenu());
-        return dishRepository.findByName(dish.getName());
+        Dish dish1 = dishRepository.findByName(dish.getName());
+        dish1.setInMenu(dish.getInMenu());
+        return dishRepository.save(dish1);
     }
 }

@@ -29,8 +29,9 @@ public class OrderService {
     }
 
     public Order changeStatus(Order order){
-        orderRepository.findAll().stream().filter(o -> o.getId().equals(order.getId()))
-                .findFirst().get().setStatus(order.getStatus());
-        return orderRepository.findAll().stream().filter(o -> o.getId().equals(order.getId())).findFirst().get();
+        Order order1 = orderRepository.findAll().stream().filter(o -> o.getId().equals(order.getId()))
+                .findFirst().get();
+        order1.setStatus(order.getStatus());
+        return orderRepository.save(order1);
     }
 }
