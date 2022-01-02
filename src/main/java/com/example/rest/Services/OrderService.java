@@ -2,10 +2,12 @@ package com.example.rest.Services;
 
 import com.example.rest.DAO.Order;
 import com.example.rest.Repositories.OrderRepository;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.DoubleStream;
 
@@ -23,9 +25,13 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public DoubleStream getSumm(){
-        return orderRepository.findAll().stream()
-                .mapToDouble(Order::getAmount);
+    public Double getSumm(){
+        Date date = new Date();
+        int sum = 0;
+        log.info(String.valueOf(orderRepository.findAll().stream().findFirst().get().getDate().getTime()));
+        log.info(String.valueOf(date.getTime()));
+        return orderRepository.findAll().stream().filter(d -> date.getTime() - d.getDate().getTime()<86400000)
+                .mapToDouble(Order::getAmount).sum();
     }
 
     public Order changeStatus(Order order){

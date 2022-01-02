@@ -52,8 +52,7 @@ public class Order {
 
 
     /*{
-        "id": 1,
-            "user": {
+        "user": {
         "id": 1,
                 "email": "qwe@mail.ru",
                 "password": "1234567890",
@@ -61,10 +60,68 @@ public class Order {
     },
         "dishes": [
         {
-            "id":1,
-                "name":"Бутерброд"
-        }
+            "id": 1,
+                "name": "Бутерброд",
+                "amount": 10,
+                "products": [
+            {
+                "id": 1,
+                    "name": "Колбаса",
+                    "quantity": 10
+            }
         ],
+            "inMenu": true
+        },
+        {
+            "id": 2,
+                "name": "Бутерброд",
+                "amount": 10,
+                "products": [
+            {
+                "id": 1,
+                    "name": "Колбаса",
+                    "quantity": 10
+            },
+            {
+                "id": 2,
+                    "name": "Хлеб",
+                    "quantity": 5
+            }
+        ],
+            "inMenu": true
+        },
+        {
+            "id": 3,
+                "name": "Нарезка",
+                "amount": 10,
+                "products": [
+            {
+                "id": 1,
+                    "name": "Колбаса",
+                    "quantity": 10
+            }
+        ],
+            "inMenu": true
+        },
+        {
+            "id": 4,
+                "name": "Нарезка",
+                "amount": 10,
+                "products": [
+            {
+                "id": 1,
+                    "name": "Колбаса",
+                    "quantity": 10
+            },
+            {
+                "id": 2,
+                    "name": "Хлеб",
+                    "quantity": 5
+            }
+        ],
+            "inMenu": true
+        }
+],
         "status": "Создан"
     }*/
 

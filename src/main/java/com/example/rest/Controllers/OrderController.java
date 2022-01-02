@@ -40,7 +40,7 @@ public class OrderController {
 
     //подсчёт выручки всех заказов
     @RequestMapping(value = "/amount", produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    public DoubleStream getAmmount(){
+    public Double getAmmount(){
         log.info("Get amount");
         return orderService.getSumm();
     }
