@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 @Slf4j
 @Service
@@ -20,5 +21,16 @@ public class OrderService {
 
     public List<Order> gerOrders(){
         return orderRepository.findAll();
+    }
+
+    public DoubleStream getSumm(){
+        return orderRepository.findAll().stream()
+                .mapToDouble(Order::getAmount);
+    }
+
+    public Order changeStatus(Order order){
+        orderRepository.findAll().stream().filter(o -> o.getId().equals(order.getId()))
+                .findFirst().get().setStatus(order.getStatus());
+        return orderRepository.findAll().stream().filter(o -> o.getId().equals(order.getId())).findFirst().get();
     }
 }

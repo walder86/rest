@@ -2,14 +2,13 @@ package com.example.rest.DAO;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -35,4 +34,19 @@ public class Order {
     inverseJoinColumns = @JoinColumn(name = "dish_id"))
     @JsonManagedReference
     private List<Dish> dishes;
+
+    @Column(name = "date")
+    @JsonIgnore
+    private Date date;
+
+    @Column(name = "status")
+    private String status;
+
+    public Double getAmount(){
+        double summ=0;
+        for (Dish d:dishes){
+            summ = summ + d.getAmount();
+        }
+        return summ;
+    }
 }

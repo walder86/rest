@@ -1,6 +1,7 @@
 package com.example.rest.DAO;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,12 +34,12 @@ public class Product {
     @NotNull
     @Min(0)
     @Column(name = "quantity")
-    private Integer quality;
+    private Integer quantity;
 
     @ManyToMany
     @JoinTable(schema = "rest", name = "dishes_products",
             joinColumns = @JoinColumn(name = "products_id"),
             inverseJoinColumns = @JoinColumn(name = "dish_id"))
-    @JsonBackReference
+    @JsonIgnore
     private List<Dish> dishes;
 }

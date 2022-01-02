@@ -23,16 +23,25 @@ public class DishController {
 
     private final DishService dishService;
 
+
+    //Создание блюда
     @RequestMapping(value = "/create",produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public Dish createDish(@Valid @RequestBody Dish dish){
         log.info("Dish create - {}", dish);
         return dishService.createDish(dish);
     }
 
+    //Отображение всех блюд
     @RequestMapping(produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public List<Dish> getDishes(){
         log.info("Get dishes");
         return dishService.getDishes();
+    }
+
+    //Изменение поля in_menu для составление меню (на вход идёт объект Dish, с уже изменённым полем in_menu)
+    @RequestMapping(value = "/menu", produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    public Dish changeInMenu(@RequestBody Dish dish){
+        return dishService.menu(dish);
     }
 
 

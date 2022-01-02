@@ -22,4 +22,9 @@ public class DishService {
     public List<Dish> getDishes(){
         return dishRepository.findAll();
     }
+
+    public Dish menu(Dish dish){
+        dishRepository.findByName(dish.getName()).setInMenu(dish.getInMenu());
+        return dishRepository.findByName(dish.getName());
+    }
 }

@@ -2,6 +2,7 @@ package com.example.rest.DAO;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class Dish {
 
     @NotNull
     @Min(0)
+    @Column(name = "amount")
     private Integer amount;
 
     @ManyToMany
@@ -46,9 +48,12 @@ public class Dish {
     @ManyToOne
     private TypeDish typeDish;
 
+    @Column(name = "in_menu")
+    private Boolean inMenu;
+
     @ManyToMany
     @JoinTable(schema = "rest", name = "")
-    @JsonBackReference
+    @JsonIgnore
     private List<Order> orders;
 
 }
