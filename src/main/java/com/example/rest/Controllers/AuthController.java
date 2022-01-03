@@ -13,6 +13,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Slf4j
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
