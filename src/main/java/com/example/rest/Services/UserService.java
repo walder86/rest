@@ -19,7 +19,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUser(User user){
+    public <T> Object getUser(User user){
         return userRepository.findByLogin(user);
     }
 
