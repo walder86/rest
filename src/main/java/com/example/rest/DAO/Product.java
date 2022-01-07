@@ -39,4 +39,6 @@ public class Product {
     @JsonBackReference
     @ManyToMany(mappedBy = "products")
     private List<Dish> dishes;
+
+
 }

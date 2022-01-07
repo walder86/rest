@@ -1,9 +1,7 @@
 package com.example.rest.DAO;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,6 +16,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(schema = "rest", name = "orders")
+@JsonIgnoreProperties({"user"})
 public class Order {
 
     @Id
@@ -25,12 +24,14 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
+
     @ManyToOne
     private User user;
 
+    @JsonIgnoreProperties({"id", "products", "amount"})
     @ManyToMany
-    @JoinTable(schema = "rest", name = "order_dishes",
-    joinColumns = @JoinColumn(name = "order_id"),
+    @JoinTable(schema = "rest", name = "dishes_orders",
+    joinColumns = @JoinColumn(name = "orders_id"),
     inverseJoinColumns = @JoinColumn(name = "dish_id"))
     private List<Dish> dishes;
 
@@ -48,6 +49,14 @@ public class Order {
             summ = summ + d.getAmount();
         }
         return summ;
+    }
+
+    public String dishes(){
+        String dishesNames = null;
+        for (Dish d :dishes){
+            dishesNames = dishesNames + d.getName() + ",\n";
+        }
+        return dishesNames;
     }
 
 

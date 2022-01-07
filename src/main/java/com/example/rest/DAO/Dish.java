@@ -50,4 +50,5 @@ public class Dish {
     @ManyToMany(mappedBy = "dishes")
     private List<Order> orders;
 
+
 }

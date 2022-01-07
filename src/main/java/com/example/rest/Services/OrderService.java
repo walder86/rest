@@ -2,14 +2,14 @@ package com.example.rest.Services;
 
 import com.example.rest.DAO.Order;
 import com.example.rest.Repositories.OrderRepository;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.DoubleStream;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -23,6 +23,14 @@ public class OrderService {
 
     public List<Order> getOrders(){
         return orderRepository.findAll();
+    }
+
+    public Optional<Order> getOrder(Integer integer){
+        return orderRepository.findById(integer);
+    }
+
+    public List<Integer> getIdOrders(){
+        return orderRepository.findAll().stream().mapToInt(Order :: getId).boxed().collect(Collectors.toList());
     }
 
     public Double getSumm(){

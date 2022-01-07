@@ -8,8 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.DoubleStream;
+import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -48,6 +49,16 @@ public class OrderController {
     public Order changeStatus(@RequestBody Order order){
         log.info("Change status - {}", order);
         return orderService.changeStatus(order);
+    }
+
+    @RequestMapping(value = "/Ids", method = RequestMethod.GET)
+    public List<Integer> getIdOrders(){
+        return orderService.getIdOrders();
+    }
+
+    @RequestMapping(value = "/getById",produces = APPLICATION_JSON_VALUE,method = RequestMethod.GET)
+    public Optional<Order> getOrder(@RequestParam(name = "a") Integer integer){
+        return orderService.getOrder(integer);
     }
 
 }
