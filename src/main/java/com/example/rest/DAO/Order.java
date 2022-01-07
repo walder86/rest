@@ -16,7 +16,6 @@ import java.util.List;
 @Getter
 @Entity
 @Table(schema = "rest", name = "orders")
-@JsonIgnoreProperties({"user"})
 public class Order {
 
     @Id
@@ -28,7 +27,6 @@ public class Order {
     @ManyToOne
     private User user;
 
-    @JsonIgnoreProperties({"id", "products", "amount"})
     @ManyToMany
     @JoinTable(schema = "rest", name = "dishes_orders",
     joinColumns = @JoinColumn(name = "orders_id"),
