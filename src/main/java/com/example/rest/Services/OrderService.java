@@ -22,20 +22,21 @@ public class OrderService {
     }
 
     public List<Order> getOrders(){
-        return orderRepository.findAll();
+        List<Order> orders = orderRepository.findAll();
+        return orders;
     }
 
-    public Optional<Order> getOrder(Integer integer){
-        return orderRepository.findById(integer);
+    /*public Integer getOrder(Integer integer){
+        return orderRepository.findById(integer).get()
+                .getDishes().stream().findFirst().get().getId();
     }
 
     public List<Integer> getIdOrders(){
         return orderRepository.findAll().stream().mapToInt(Order :: getId).boxed().collect(Collectors.toList());
-    }
+    }*/
 
     public Double getSumm(){
         Date date = new Date();
-        int sum = 0;
         log.info(String.valueOf(orderRepository.findAll().stream().findFirst().get().getDate().getTime()));
         log.info(String.valueOf(date.getTime()));
         return orderRepository.findAll().stream().filter(d -> date.getTime() - d.getDate().getTime()<86400000)

@@ -49,13 +49,6 @@ public class Order {
         return summ;
     }
 
-    public String dishes(){
-        String dishesNames = null;
-        for (Dish d :dishes){
-            dishesNames = dishesNames + d.getName() + ",\n";
-        }
-        return dishesNames;
-    }
 
 
     /*{

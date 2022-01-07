@@ -1,7 +1,9 @@
 package com.example.rest.Controllers;
 
 
+import com.example.rest.DAO.Dish;
 import com.example.rest.DAO.Order;
+import com.example.rest.Services.DishService;
 import com.example.rest.Services.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -22,6 +23,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class OrderController {
 
     private final OrderService orderService;
+    private final DishService dishService;
 
     //создание заказа
     @RequestMapping(value = "/create",produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
@@ -33,7 +35,6 @@ public class OrderController {
     //отображение всех заказов
     @RequestMapping(produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public List<Order> getOrders(){
-        log.info("Get orders");
         return orderService.getOrders();
     }
 
@@ -51,14 +52,14 @@ public class OrderController {
         return orderService.changeStatus(order);
     }
 
-    @RequestMapping(value = "/Ids", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/Ids", method = RequestMethod.GET)
     public List<Integer> getIdOrders(){
         return orderService.getIdOrders();
     }
 
-    @RequestMapping(value = "/getById",produces = APPLICATION_JSON_VALUE,method = RequestMethod.GET)
-    public Optional<Order> getOrder(@RequestParam(name = "a") Integer integer){
-        return orderService.getOrder(integer);
-    }
+    @RequestMapping(path = "/getById/{id}",produces = APPLICATION_JSON_VALUE,method = RequestMethod.GET)
+    public Integer getOrder(@PathVariable Integer id){
+        return orderService.getOrder(id);
+    }*/
 
 }
