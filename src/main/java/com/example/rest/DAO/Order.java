@@ -27,7 +27,7 @@ public class Order {
     @ManyToOne
     private User user;
 
-    @JsonIgnoreProperties({"name", "amount","products","inMenu"})
+    //@JsonIgnoreProperties({"name", "amount","products","inMenu"})
     @ManyToMany
     @JoinTable(schema = "rest", name = "dishes_orders",
     joinColumns = @JoinColumn(name = "orders_id"),
