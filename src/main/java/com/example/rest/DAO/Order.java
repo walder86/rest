@@ -35,7 +35,6 @@ public class Order {
     private List<Dish> dishes;
 
     @Column(name = "date")
-    @JsonInclude(JsonInclude.Include.USE_DEFAULTS)
     private Date date;
 
     @Column(name = "status")
