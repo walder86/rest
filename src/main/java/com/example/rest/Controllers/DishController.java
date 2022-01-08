@@ -39,7 +39,7 @@ public class DishController {
 
     //Отображение одного блюда по его ID
     @RequestMapping(path = "/getById/{id}", produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    public Optional<Dish> getDish(@PathVariable Integer id){
+    public Dish getDish(@PathVariable Integer id){
         return dishService.getDishById(id);
     }
 

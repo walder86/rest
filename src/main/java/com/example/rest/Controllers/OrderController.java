@@ -52,14 +52,14 @@ public class OrderController {
         return orderService.changeStatus(order);
     }
 
-    /*@RequestMapping(value = "/Ids", method = RequestMethod.GET)
+    @RequestMapping(value = "/Ids", method = RequestMethod.GET)
     public List<Integer> getIdOrders(){
         return orderService.getIdOrders();
     }
 
     @RequestMapping(path = "/getById/{id}",produces = APPLICATION_JSON_VALUE,method = RequestMethod.GET)
-    public Integer getOrder(@PathVariable Integer id){
+    public Order getOrder(@PathVariable Integer id){
         return orderService.getOrder(id);
-    }*/
+    }
 
 }

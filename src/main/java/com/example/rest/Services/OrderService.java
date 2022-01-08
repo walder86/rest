@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -34,14 +35,13 @@ public class OrderService {
         return orders;
     }
 
-    /*public Integer getOrder(Integer integer){
-        return orderRepository.findById(integer).get()
-                .getDishes().stream().findFirst().get().getId();
+    public Order getOrder(Integer integer){
+        return orderRepository.findById(integer).get();
     }
 
     public List<Integer> getIdOrders(){
         return orderRepository.findAll().stream().mapToInt(Order :: getId).boxed().collect(Collectors.toList());
-    }*/
+    }
 
     public Double getSumm(){
         Date date = new Date();

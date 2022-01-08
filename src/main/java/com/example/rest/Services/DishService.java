@@ -24,8 +24,8 @@ public class DishService {
         return dishRepository.findAll();
     }
 
-    public Optional<Dish> getDishById(Integer integer){
-        return dishRepository.findById(integer);
+    public Dish getDishById(Integer integer){
+        return dishRepository.findById(integer).get();
     }
 
     public Dish menu(Dish dish){
