@@ -23,10 +23,11 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
-
+    //@JsonIgnoreProperties({"email","password","role"})
     @ManyToOne
     private User user;
 
+    @JsonIgnoreProperties({"name", "amount","products","inMenu"})
     @ManyToMany
     @JoinTable(schema = "rest", name = "dishes_orders",
     joinColumns = @JoinColumn(name = "orders_id"),
@@ -34,7 +35,7 @@ public class Order {
     private List<Dish> dishes;
 
     @Column(name = "date")
-    @JsonIgnore
+    @JsonInclude(JsonInclude.Include.USE_DEFAULTS)
     private Date date;
 
     @Column(name = "status")

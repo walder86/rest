@@ -18,6 +18,8 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     public Order createOrder(Order order){
+        Date date = new Date();
+        order.setDate(date);
         return orderRepository.save(order);
     }
 
