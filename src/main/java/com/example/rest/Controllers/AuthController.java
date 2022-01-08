@@ -1,10 +1,12 @@
 package com.example.rest.Controllers;
 
 import com.example.rest.DAO.User;
+import com.example.rest.DTO.UserDTO;
+import com.example.rest.Mappers.UserMapper;
 import com.example.rest.Services.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,13 +21,14 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class AuthController {
 
     private final UserService userService;
+    private final UserMapper mapper;
 
 
     //Создание пользователя
     @RequestMapping(value = "/create", produces = APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public User createUser(@Valid @RequestBody User user){
-        log.info("User create - {}", user.getEmail());
-        return userService.createUser(user);
+    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDto){
+        log.info("User create - {}", userDto.getEmail());
+        return ResponseEntity.ok(mapper.mapToDto(userService.createUser(mapper.mapToEntity(userDto))));
     }
 
 

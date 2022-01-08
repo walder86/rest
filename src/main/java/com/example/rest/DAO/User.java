@@ -1,16 +1,11 @@
 package com.example.rest.DAO;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Slf4j
 @AllArgsConstructor
@@ -18,8 +13,9 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(schema = "rest", name = "users")
-public class User {
+public class User implements DAOEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

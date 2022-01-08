@@ -2,10 +2,7 @@ package com.example.rest.DAO;
 
 
 import com.fasterxml.jackson.annotation.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -19,9 +16,10 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Builder
 @Table(schema = "rest", name = "dishes")
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Dish {
+public class Dish implements DAOEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

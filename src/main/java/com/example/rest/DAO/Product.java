@@ -1,11 +1,7 @@
 package com.example.rest.DAO;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -19,8 +15,9 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Builder
 @Table(schema = "rest", name = "products")
-public class Product {
+public class Product implements DAOEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

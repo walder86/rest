@@ -10,13 +10,14 @@ import java.util.Date;
 import java.util.List;
 
 @Slf4j
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
 @Table(schema = "rest", name = "orders")
-public class Order {
+public class Order implements DAOEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
