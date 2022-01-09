@@ -17,7 +17,7 @@ import java.util.List;
 public class OrderDTO implements DTO{
     private Integer id;
     private UserDTO user;
-    private List<DishDTO> dish;
+    private List<DishDTO> dishes;
     private Date date;
     private String status;
 }
