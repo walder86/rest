@@ -17,7 +17,7 @@ public class OrderMapper implements Mapper<OrderDTO, Order>{
         return OrderDTO.builder()
                 .id(entity.getId())
                 .user(userMapper.mapToDto(entity.getUser()))
-                .dish(dishMapper.mapToDto(entity.getDishes()))
+                .dishes(dishMapper.mapToDto(entity.getDishes()))
                 .date(entity.getDate())
                 .status(entity.getStatus())
                 .build();
@@ -28,7 +28,7 @@ public class OrderMapper implements Mapper<OrderDTO, Order>{
         return Order.builder()
                 .id(dto.getId())
                 .user(userMapper.mapToEntity(dto.getUser()))
-                .dishes(dishMapper.mapToEntity(dto.getDish()))
+                .dishes(dishMapper.mapToEntity(dto.getDishes()))
                 .date(dto.getDate())
                 .status(dto.getStatus())
                 .build();
