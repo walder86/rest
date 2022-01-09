@@ -28,11 +28,7 @@ public class OrderService {
     }
 
     public List<Order> getOrders(){
-        List<Order> orders = orderRepository.findAll();
-        for(Order o:orders){
-            o.setId(o.getDishes().stream().findFirst().get().getId());
-        }
-        return orders;
+        return orderRepository.findAll();
     }
 
     public Order getOrder(Integer integer){

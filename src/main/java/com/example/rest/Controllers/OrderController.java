@@ -36,6 +36,7 @@ public class OrderController {
     //отображение всех заказов
     @RequestMapping(produces = APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public ResponseEntity<List<OrderDTO>> getOrders(){
+        log.info("get Orders");
         return ResponseEntity.ok(mapper.mapToDto(orderService.getOrders()));
     }
 
