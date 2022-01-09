@@ -2,6 +2,7 @@ package com.example.rest.DTO;
 
 import com.example.rest.DAO.Order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
