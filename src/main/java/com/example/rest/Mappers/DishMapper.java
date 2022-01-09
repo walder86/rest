@@ -33,7 +33,6 @@ public class DishMapper implements Mapper<DishDTO, Dish>{
                 .amount(dto.getAmount())
                 .name(dto.getName())
                 .inMenu(dto.getInMenu())
-                .products(mapper.mapToEntity(products))
                 .build();
     }
 }
