@@ -1,12 +1,8 @@
 package com.example.rest.DAO;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.*;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -20,8 +16,10 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Builder
 @Table(schema = "rest", name = "dishes")
-public class Dish {
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Dish implements DAOEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,21 +32,21 @@ public class Dish {
 
     @NotNull
     @Min(0)
+    @Column(name = "amount")
     private Integer amount;
 
     @ManyToMany
     @JoinTable(schema = "rest", name = "dishes_products",
-    joinColumns = @JoinColumn(name = "dish_id"),
-    inverseJoinColumns = @JoinColumn(name = "products_id"))
-    @JsonManagedReference
+    joinColumns = {@JoinColumn(name = "dish_id")},
+    inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private List<Product> products;
 
-    @ManyToOne
-    private TypeDish typeDish;
+    @Column(name = "in_menu")
+    private Boolean inMenu;
 
-    @ManyToMany
-    @JoinTable(schema = "rest", name = "")
     @JsonBackReference
+    @ManyToMany(mappedBy = "dishes")
     private List<Order> orders;
+
 
 }

@@ -19,6 +19,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public <T> Object getUser(User user){
+        return userRepository.findByLogin(user);
+    }
+
     public List<User> getUsers(){
         return userRepository.findAll();
     }

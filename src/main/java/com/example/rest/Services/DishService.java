@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -21,5 +22,15 @@ public class DishService {
 
     public List<Dish> getDishes(){
         return dishRepository.findAll();
+    }
+
+    public Dish getDishById(Integer integer){
+        return dishRepository.findById(integer).get();
+    }
+
+    public Dish menu(Dish dish){
+        Dish dish1 = dishRepository.findByName(dish.getName());
+        dish1.setInMenu(dish.getInMenu());
+        return dishRepository.save(dish1);
     }
 }
